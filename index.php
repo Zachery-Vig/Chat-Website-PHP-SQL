@@ -11,23 +11,34 @@
 </head>
 <body>
     <style>
-        
+        * {
+            background-color: #2e2e2e;
+            color: #c9c9c9;
+            font-family: Arial;
+        }
     </style>
 
-    <h1>Message Board</h1>
-
+    <center>
+        <p style="font-size: 64px">Message Board</p>
+        <hr></hr>
     <!-- Form for submitting new messages -->
     <form action="index.php" method="POST">
-        <input type="text" id="user_name" placeholder="Enter Username" name="user_name"></input>
-        <input type="text" id="user_input" placeholder="Enter Message" name="user_input" required></input>
-        <button type="submit">Submit</button>
+        <br></br>
+        <input style="font-size: 24px" type="text" id="user_name" placeholder="Enter Username" name="user_name"></input>
+        <br></br>
+        <input style="font-size: 24px" type="text" id="user_input" placeholder="Enter Message" name="user_input" required></input>
+        <br></br>
+        <button style="font-size: 24px" type="submit">Submit</button>
     </form>
+    </br>
     <h1>Messages:</h1>
+    </center>
     <?php
     // Display messages if there are any
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-            echo "<h2>" . $row['name'] . ": " . $row['message'] . "</h2>";
+            echo "<p style='font-size: 24px; position: relative; left: 20%;'>" . $row['name'] . ": " . $row['message'] . "</p>";
+            header("refresh");
         }
     } else {
         echo "<h2>No Messages Yet...</h2>";

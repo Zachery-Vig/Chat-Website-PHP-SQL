@@ -32,9 +32,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
 
     $stmt->close();
+    header("refresh");
 }
 
-// Retrieve all messages from the database
+if ($_SERVER["REQUEST_METHOD"]=="REFRESH") {
+    header("refresh");
+}
+
+// Retrieve all messages from the database+
 $sql = "SELECT name, message, timestamp FROM messages ORDER BY timestamp DESC";
 $result = $conn->query($sql);
 ?>

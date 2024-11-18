@@ -17,11 +17,9 @@
             font-family: Arial;
         }
     </style>
-
     <center>
-        <p style="font-size: 64px">Message Board</p>
+        <b style="font-size: 64px">Message Board</b>
         <hr></hr>
-    <!-- Form for submitting new messages -->
     <form action="index.php" method="POST">
         <br></br>
         <input style="font-size: 24px" type="text" id="user_name" placeholder="Enter Username" name="user_name"></input>
@@ -31,20 +29,19 @@
         <button style="font-size: 24px" type="submit">Submit</button>
     </form>
     </br>
-    <h1>Messages:</h1>
+    <form action="index.php" method="REFRESH"><button style="font-size: 24px">Refresh</button></form>
+    <p style="font-size: 48px">Messages:</p>
     </center>
     <?php
-    // Display messages if there are any
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             echo "<p style='font-size: 24px; position: relative; left: 20%;'>" . $row['name'] . ": " . $row['message'] . "</p>";
             header("refresh");
         }
     } else {
-        echo "<h2>No Messages Yet...</h2>";
+        echo "<p style='font-size: 24px; position: relative; left: 20%;'>No Messages Yet...</p>";
     }
 
-    // Close the database connection
     $conn->close();
     ?>
 </body>

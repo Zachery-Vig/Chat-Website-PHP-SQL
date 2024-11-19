@@ -43,7 +43,7 @@ include_once("server.php")
         <br></br>
         <input style="font-size: 24px" type="text" id="user_input" placeholder="Enter Message" name="user_input" required></input>
         <br></br>
-        <button style="font-size: 24px" type="submit">Submit</button>
+        <button style="font-size: 24px" type="submit" id="submit_button">Submit</button>
     </form>
     <button onclick="location.href = 'chat.php';" style="font-size: 24px">Refresh</button>
     <button onclick="location.href = 'index.php';" style="font-size: 24px">Back</button>
@@ -54,7 +54,7 @@ include_once("server.php")
     <?php
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-            echo "<p style='font-size: 24px; position: relative; left: 20%;'>" . $row['name'] . ": " . $row['message'] . "</p>";
+            echo "<p style='font-size: 24px; position: relative; left: 20%;'>" . $row['timestamp'] . ": " . $row['name'] . ": " . $row['message'] . "</p>";
         }
     } else {
         echo "<p style='font-size: 24px; position: relative; left: 20%;'>No Messages Yet...</p>";
@@ -62,5 +62,18 @@ include_once("server.php")
 
     $conn->close();
     ?>
+    <script>
+        //Auto saves and loads last name used to local storage.
+        window.onload = function() {
+            const storedName = localStorage.getItem('user_name');
+            if (storedName) {
+                document.getElementById('user_name').value = storedName;
+            }
+        }
+        document.getElementById('submit_button').addEventListener('click', function() {
+            const name = document.getElementById('user_name').value;
+            localStorage.setItem('user_name', name);
+        });
+    </script>
 </body>
 </html>

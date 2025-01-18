@@ -41,7 +41,7 @@ include_once("server.php")
         <br></br>
         <input style="font-size: 24px" type="text" id="user_name" placeholder="Enter Username" name="user_name"></input>
         <br></br>
-        <input style="font-size: 24px; width: 700px;" type="text" id="user_input" placeholder="Enter Message" name="user_input" required></input>
+        <textarea style="font-size: 24px;" rows="6" cols="35" type="text" id="user_input" placeholder="Enter Message" name="user_input" required></textarea>
         <br></br>
         <button style="font-size: 24px" type="submit" id="submit_button">Submit</button>
     </form>
@@ -49,17 +49,17 @@ include_once("server.php")
     <button onclick="location.href = 'index.php';" style="font-size: 24px">Back</button>
     <br></br>
     <br></br>
-    <b style="font-size: 48px">Messages:</b>
+    <b style="font-size: 52px">Messages</b>
     </center>
     <br>
     <div style="text-align: center;">
     <div style="display: inline-block; text-align: left;">
-    <div style="border: 5px solid black; width: 800px; padding: 30px; background-color: rgb(165, 165, 165);">
+    <div style="border: 5px solid black; width: 800px; padding: 20px; background-color: rgb(150, 150, 150);">
     <br>
     <?php
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-            echo "<p style='font-size: 24px; background-color: rgb(165, 165, 165); color: rgb(0,0,0);'>" . $row['timestamp'] . ": " . $row['name'] . ": " . $row['message'] . "</p>";
+            echo "<p style='font-size: 24px; background-color: rgb(220, 220, 220); color: rgb(0,0,0);'>" . $row['timestamp'] . ": " . $row['name'] . ": " . $row['message'] . "</p>";
         }
     } else {
         echo "<p style='font-size: 24px; color: rgb(0,0,0);'>No Messages Yet...</p>";
